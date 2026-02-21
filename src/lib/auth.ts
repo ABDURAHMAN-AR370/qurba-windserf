@@ -67,8 +67,6 @@ export async function signUp(
   email: string,
   password: string,
   fullName: string,
-  gender: string,
-  place: string,
   whatsappNumber: string,
   referredBy?: string,
   signupSource?: string
@@ -105,8 +103,6 @@ export async function signUp(
     user_id: authData.user.id,
     email: email.toLowerCase(),
     full_name: fullName,
-    gender,
-    place,
     whatsapp_number: whatsappNumber,
     batch_number: batchNumber,
     referred_by: referredBy || null,

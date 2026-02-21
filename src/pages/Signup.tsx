@@ -22,8 +22,6 @@ export default function Signup() {
     password: "",
     confirmPassword: "",
     fullName: "",
-    gender: "",
-    place: "",
     whatsappNumber: "",
     signupSource: "",
   });
@@ -54,8 +52,6 @@ export default function Signup() {
       formData.email,
       formData.password,
       formData.fullName,
-      formData.gender,
-      formData.place,
       formData.whatsappNumber,
       referralCode,
       formData.signupSource
@@ -114,37 +110,20 @@ export default function Signup() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="gender">Gender</Label>
-                <Select value={formData.gender} onValueChange={(value) => handleChange("gender", value)} disabled={loading}>
-                  <SelectTrigger><SelectValue placeholder="Select gender" /></SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="male">Male</SelectItem>
-                    <SelectItem value="female">Female</SelectItem>
-                    <SelectItem value="other">Other</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="place">Place</Label>
-                <Input id="place" type="text" placeholder="City, Country" value={formData.place} onChange={(e) => handleChange("place", e.target.value)} required disabled={loading} />
-              </div>
-
-              <div className="space-y-2">
                 <Label htmlFor="whatsappNumber">WhatsApp Number</Label>
                 <Input id="whatsappNumber" type="tel" placeholder="1234567890" value={formData.whatsappNumber} onChange={(e) => handleChange("whatsappNumber", e.target.value)} required disabled={loading} />
               </div>
 
               <div className="space-y-2">
                 <Label>How did you hear about us?</Label>
-                <RadioGroup value={formData.signupSource} onValueChange={(v) => handleChange("signupSource", v)} className="grid grid-cols-2 gap-2">
-                  {SIGNUP_SOURCES.map(source => (
-                    <div key={source} className="flex items-center space-x-2">
-                      <RadioGroupItem value={source} id={`source-${source}`} />
-                      <Label htmlFor={`source-${source}`} className="text-sm">{source}</Label>
-                    </div>
-                  ))}
-                </RadioGroup>
+                <Select value={formData.signupSource} onValueChange={(value) => handleChange("signupSource", value)} disabled={loading}>
+                  <SelectTrigger><SelectValue placeholder="Select an option" /></SelectTrigger>
+                  <SelectContent>
+                    {SIGNUP_SOURCES.map(source => (
+                      <SelectItem key={source} value={source}>{source}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </div>
 
               <div className="space-y-2">
